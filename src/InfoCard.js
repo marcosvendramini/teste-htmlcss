@@ -7,7 +7,6 @@ class InfoCard extends Component {
     this.props = props;
     this.state = {
       expanded: false,
-      close: false,
       transform: ""
     }
   }
@@ -42,23 +41,20 @@ class InfoCard extends Component {
 
   render() {
     return (
-      !this.state.close?
-        <div className="icard">
-          <input className="closeB" type="button" onClick={this.handleClick.bind(this)}/>
-          <img src={this.props.url.url} alt="icon"/>
-          <div className="info">
-            <h1>{this.props.infoCard.companyName}</h1>
-            <p>Preço: ${this.props.infoCard.latestPrice}</p>
-            <p>Data:&nbsp;{this.props.infoCard.latestTime}</p>
-          </div>
-          <div className="navBut">
-            <a href="https://monetus.com.br/comecar" className="shareB" type="button"/>
-            <input className={'expandB'+ this.state.transform} type="button" onClick={this.handleExpandClick.bind(this)}/>
-          </div>
-          {this.renderExpand()}
+      <div className="icard">
+        <input className="closeB" type="button" onClick={this.handleClick.bind(this)}/>
+        <img src={this.props.url.url} alt="icon"/>
+        <div className="info">
+          <h1>{this.props.infoCard.companyName}</h1>
+          <p>Preço: ${this.props.infoCard.latestPrice}</p>
+          <p>Data:&nbsp;{this.props.infoCard.latestTime}</p>
         </div>
-      :
-        null
+        <div className="navBut">
+          <a href="https://monetus.com.br/comecar" className="shareB" type="button"/>
+          <input className={'expandB'+ this.state.transform} type="button" onClick={this.handleExpandClick.bind(this)}/>
+        </div>
+        {this.renderExpand()}
+      </div>
     );
   }
 }

@@ -6,7 +6,6 @@ class InfoTable extends Component {
     super(props);
     this.props = props;
     this.state = {
-      close: false,
     }
   }
 
@@ -16,19 +15,16 @@ class InfoTable extends Component {
   
   render() {
     return (
-      !this.state.close?
-        <tr>
-          <td>{this.props.infoCard.companyName}</td>
-          <td>${this.props.infoCard.latestPrice}</td>
-          <td>{this.props.infoCard.latestTime}</td>
-          <td>{this.props.infoCard.sector}</td>
-          <td>${this.props.infoCard.high}</td>
-          <td>${this.props.infoCard.low}</td>
-          <td>{this.props.infoCard.change}%</td>
-          <td type="button" onClick={this.handleClick.bind(this)}>X</td>
-        </tr>
-      :
-        null
+      <tr>
+        <td>{this.props.infoCard.companyName}</td>
+        <td>${this.props.infoCard.latestPrice}</td>
+        <td>{this.props.infoCard.latestTime}</td>
+        <td>{this.props.infoCard.sector}</td>
+        <td>${this.props.infoCard.high}</td>
+        <td>${this.props.infoCard.low}</td>
+        <td>{this.props.infoCard.change}%</td>
+        <td type="button" onClick={this.handleClick.bind(this)}>X</td>
+      </tr>
     );
   }
 }
