@@ -7,13 +7,20 @@ class TableSpace extends Component {
     super(props);
     this.props = props;
     this.state = {
+      id:""
     }
   }
 
   renderInfoCard(){
     return this.props.infoCard.map(ic => {
-      return <InfoTable key={ic.id} infoCard={ic.buscar} url={ic.url}/>;
+      return <InfoTable key={ic.id} infoCard={ic.buscar} url={ic.url} id={ic.id} callbackExc={this.callbackExc.bind(this)}/>;
    });
+  }
+
+  callbackExc(id){
+    this.state.id=id;
+    this.setState(this.state);
+    this.props.callbackExc(this.state.id);
   }
   
   render() {

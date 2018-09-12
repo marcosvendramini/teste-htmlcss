@@ -11,14 +11,16 @@ class App extends Component {
     this.props = props;
     this.state = {
       infoCard: [],
-      spaceType:"card"
+      spaceType:"card",
+      key:0
     }
   }
 
   callbackSF(buscar, url){
-    let id = this.state.infoCard.length + 1;
+    let id = this.state.key;
     let elements = {id, buscar, url};
     this.state.infoCard.unshift(elements);
+    this.state.key=id+1;
     this.setState(this.state);
   }
 
@@ -27,12 +29,18 @@ class App extends Component {
     this.setState(this.state);
   }
 
+  callbackExc(id){
+    id=this.state.infoCard.map(ic=>{return ic.id}).indexOf(id);
+    this.state.infoCard.splice(id,1);
+    this.setState(this.state);
+  }
+
   renderInfoCard(){
-    return <CardSpace infoCard={this.state.infoCard}/>;
+    return <CardSpace infoCard={this.state.infoCard} callbackExc={this.callbackExc.bind(this)}/>;
   }
   
   renderInfoTable(){
-    return <TableSpace infoCard={this.state.infoCard}/>;
+    return <TableSpace infoCard={this.state.infoCard} callbackExc={this.callbackExc.bind(this)}/>;
   }
 
   renderInfos(){

@@ -11,8 +11,7 @@ class InfoTable extends Component {
   }
 
   handleClick(e) {
-    this.state.close= !this.state.close;
-    this.setState(this.state);
+    this.props.callbackExc(this.props.id);
   }
   
   render() {
